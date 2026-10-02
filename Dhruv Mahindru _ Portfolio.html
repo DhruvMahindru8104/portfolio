@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dhruv Mahindru | Data Analyst & Business Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F5F7;--card:#fff;--ink:#12263A;--mute:#5A6B7B;--line:#D5DEE5;--teal:#0F8B8D;--amber:#C98A1B;--coral:#D1495B;--tealsoft:#DDF1F1;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1A26;--card:#152433;--ink:#E7EEF4;--mute:#92A4B5;--line:#26394B;--teal:#3CC4C6;--amber:#E8B04A;--coral:#F0707F;--tealsoft:#11363D}}
+:root[data-theme="dark"]{--bg:#0E1A26;--card:#152433;--ink:#E7EEF4;--mute:#92A4B5;--line:#26394B;--teal:#3CC4C6;--amber:#E8B04A;--coral:#F0707F;--tealsoft:#11363D}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 "IBM Plex Sans",system-ui,sans-serif;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.9;z-index:-1}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.4rem}
+p{margin:0 0 1rem;max-width:68ch}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.85rem}
+nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:1rem;padding:.7rem clamp(1rem,4vw,3rem);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;margin-right:auto}
+nav a{color:var(--mute);text-decoration:none;font-size:.92rem;padding:.3rem .1rem;border-bottom:2px solid transparent}
+nav a.on,nav a:hover{color:var(--ink);border-color:var(--teal)}
+#theme{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.3rem .6rem;cursor:pointer;font:inherit}
+@media(max-width:700px){nav a{display:none}}
+section{padding:4rem clamp(1rem,5vw,4rem);max-width:1150px;margin:0 auto}
+.sub{color:var(--mute);margin-bottom:2rem}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;min-height:82vh}
+@media(max-width:850px){.hero{grid-template-columns:1fr;min-height:0}}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.02em}
+.role{color:var(--teal);font-weight:500;margin:.8rem 0 1rem;font-size:1.15rem}
+.btns{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
+.btn{padding:.65rem 1.1rem;border-radius:6px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;font-weight:500;cursor:pointer;font:inherit;font-weight:500;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.alt{background:transparent;color:var(--ink)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.bar{display:flex;gap:6px;align-items:center;padding:.5rem .8rem;border-bottom:1px solid var(--line);color:var(--mute)}
+.bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.bar span{margin-left:.5rem}
+.query{padding:1rem;min-height:9.2rem;white-space:pre-wrap}
+.query .k{color:var(--teal)}.query .n{color:var(--amber)}
+.caret{display:inline-block;width:8px;height:1em;background:var(--ink);vertical-align:-2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.kpi{padding:.9rem .7rem;border-right:1px solid var(--line)}
+.kpi:last-child{border:0}
+.kpi b{display:block;font:800 1.7rem "Bricolage Grotesque",sans-serif;color:var(--teal)}
+.kpi span{font-size:.78rem;color:var(--mute);line-height:1.2;display:block}
+@media(max-width:480px){.kpis{grid-template-columns:repeat(2,1fr)}.kpi:nth-child(2){border-right:0}.kpi:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+/* pipeline */
+.flow{display:flex;gap:0;flex-wrap:wrap;margin:1.5rem 0}
+.stage{flex:1 1 130px;background:var(--card);border:1px solid var(--line);padding:.9rem .8rem;text-align:left;cursor:pointer;color:var(--ink);font:inherit;position:relative;transition:background .2s,border-color .2s}
+.stage+.stage{margin-left:-1px}
+.stage b{display:block;font-family:"Bricolage Grotesque",sans-serif}
+.stage small{color:var(--mute)}
+.stage[aria-selected=true]{background:var(--tealsoft);border-color:var(--teal);z-index:1}
+.detail{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);padding:1.1rem 1.3rem;border-radius:0 8px 8px 0;min-height:7rem}
+.detail.swap{animation:swap .35s}
+@keyframes swap{from{opacity:0;transform:translateX(-10px)}}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:.15rem .7rem;font-size:.82rem;color:var(--mute)}
+.proj2{margin-top:2rem}
+.proj2 h3{font-size:1.25rem}
+/* figures */
+.figs{display:grid;grid-template-columns:200px 1fr;gap:1.5rem;align-items:center;margin-top:2rem}
+.figs.two{grid-template-columns:1fr 1fr}
+@media(max-width:700px){.figs,.figs.two{grid-template-columns:1fr}.figs figure:first-child{max-width:200px}}
+figure{margin:0}
+figure svg{width:100%;height:auto;display:block;background:var(--card);border:1px solid var(--line);border-radius:10px}
+figcaption{color:var(--mute);font-size:.82rem;margin-top:.4rem}
+.f-card{fill:var(--card);stroke:var(--line)}.f-bg{fill:var(--bg);stroke:var(--line)}.f-t{fill:var(--teal)}.f-a{fill:var(--amber)}.f-c{fill:var(--coral)}.f-l{fill:var(--line)}.f-ink{fill:var(--ink)}
+.f-txt{font:600 11px "IBM Plex Sans",sans-serif;fill:var(--ink)}.f-mut{font:10px "IBM Plex Sans",sans-serif;fill:var(--mute)}
+.f-line{fill:none;stroke:var(--amber);stroke-width:2.5;stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1.6s ease .3s}
+.rv.in .f-line{stroke-dashoffset:0}
+.gb{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in .gb{transform:scaleY(1)}
+.gb:nth-of-type(2){transition-delay:.08s}.gb:nth-of-type(3){transition-delay:.16s}.gb:nth-of-type(4){transition-delay:.24s}.gb:nth-of-type(5){transition-delay:.32s}.gb:nth-of-type(6){transition-delay:.4s}
+.donut{fill:none;stroke:var(--coral);stroke-width:14;stroke-dasharray:0 200;transition:stroke-dasharray 1.2s ease .3s}
+.rv.in .donut{stroke-dasharray:62 200}
+@media(prefers-reduced-motion:reduce){.gb{transform:none}.f-line{stroke-dashoffset:0}.donut{stroke-dasharray:62 200}}
+/* heatmap */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:.35rem .9rem;border-radius:99px;cursor:pointer;font:inherit;font-size:.9rem}
+.tab[aria-pressed=true]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;background:var(--card)}
+th,td{border:1px solid var(--line);padding:.55rem .8rem;text-align:center;font-size:.9rem}
+th:first-child,td:first-child{text-align:left}
+thead th{font-family:"Bricolage Grotesque",sans-serif}
+td.cell{width:20%}
+td.cell i{display:block;height:22px;border-radius:4px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+td.cell.off i{background:transparent;border:1px dashed var(--line)}
+table.in td.cell i{transform:scaleX(1)}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:var(--tealsoft)}
+.legend{color:var(--mute);font-size:.85rem;margin-top:.7rem}
+/* timeline */
+.tl{border-left:2px solid var(--teal);padding-left:1.5rem;margin-left:.4rem;position:relative}
+.tl:before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 var(--teal);animation:pulse 2.2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px transparent}}
+.tl ul{padding-left:1.1rem;margin:.6rem 0}
+.tl li{margin-bottom:.45rem;max-width:70ch}
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:2rem}
+.edu .panel{padding:1.1rem 1.3rem}
+.edu small{color:var(--mute)}
+.str{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.str .chip{color:var(--ink)}
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.2rem}
+.contact a,.contact button{display:block;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1rem;text-decoration:none;color:var(--ink);cursor:pointer;font:inherit;transition:border-color .2s,transform .2s}
+.contact a:hover,.contact button:hover{border-color:var(--teal);transform:translateY(-2px)}
+.contact small{display:block;color:var(--mute)}
+footer{text-align:center;color:var(--mute);padding:2rem 1rem 3rem;font-size:.85rem}
+/* reveal: only the sections' content once */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}td.cell i{transform:scaleX(1)}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav>
+  <b>DM</b>
+  <a href="#home" class="on">Home</a><a href="#work">Client project</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+  <button id="theme" aria-label="Toggle light and dark theme">Theme</button>
+</nav>
+
+<section id="home" class="hero">
+  <div>
+    <h1>Dhruv Mahindru</h1>
+    <p class="role">Data Analyst | Business Automation | Software Development</p>
+    <p>I turn business requirements into practical technology: dashboards in Power BI, SQL and Excel, automation with Google Apps Script, and full web apps in React. I also train 200+ students in data analytics and development.</p>
+    <div class="btns">
+      <a class="btn" href="#work">See the client project</a>
+      <a class="btn alt" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <div class="panel" aria-label="Summary dashboard">
+    <div class="bar"><i></i><i></i><i></i><span class="mono">dhruv_summary.sql</span></div>
+    <div class="query mono" id="query" aria-live="off"></div>
+    <div class="kpis">
+      <div class="kpi"><b data-n="200" data-s="+">0</b><span>students trained</span></div>
+      <div class="kpi"><b data-n="10">0</b><span>days to build JKPrefix</span></div>
+      <div class="kpi"><b data-n="2">0</b><span>dashboard & system projects</span></div>
+      <div class="kpi"><b data-n="70" data-s="%">0</b><span>BCA score</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="rv">
+    <h2>JKPrefix Sales & Order Management System</h2>
+    <p class="sub">Client project, built solo in 10 days. It replaced a paper-based order process. Select a stage to see how the data moves.</p>
+    <div class="flow" role="tablist" aria-label="Order pipeline stages" id="flow"></div>
+    <div class="detail" id="detail" role="tabpanel" aria-live="polite"></div>
+    <div class="chips" id="stack"></div>
+    <div class="figs">
+      <figure>
+        <svg viewBox="0 0 160 300" role="img" aria-label="Illustration of the mobile product catalogue and order screen">
+          <rect x="8" y="6" width="144" height="288" rx="20" class="f-bg"/>
+          <rect x="18" y="22" width="124" height="256" rx="10" class="f-card"/>
+          <rect x="18" y="22" width="124" height="28" rx="10" class="f-t"/>
+          <text x="30" y="40" class="f-txt" style="fill:#fff">Product catalogue</text>
+          <g><rect x="28" y="60" width="50" height="62" rx="6" class="f-bg"/><circle cx="53" cy="82" r="12" class="f-a"/><rect x="36" y="102" width="34" height="5" rx="2" class="f-l"/><rect x="42" y="111" width="22" height="5" rx="2" class="f-l"/></g>
+          <g><rect x="84" y="60" width="50" height="62" rx="6" class="f-bg"/><rect x="97" y="70" width="24" height="24" rx="5" class="f-t"/><rect x="92" y="102" width="34" height="5" rx="2" class="f-l"/><rect x="98" y="111" width="22" height="5" rx="2" class="f-l"/></g>
+          <g><rect x="28" y="130" width="50" height="62" rx="6" class="f-bg"/><rect x="41" y="140" width="24" height="24" rx="12" class="f-c"/><rect x="36" y="172" width="34" height="5" rx="2" class="f-l"/><rect x="42" y="181" width="22" height="5" rx="2" class="f-l"/></g>
+          <g><rect x="84" y="130" width="50" height="62" rx="6" class="f-bg"/><polygon points="109,140 123,164 95,164" class="f-a"/><rect x="92" y="172" width="34" height="5" rx="2" class="f-l"/><rect x="98" y="181" width="22" height="5" rx="2" class="f-l"/></g>
+          <rect x="28" y="206" width="106" height="18" rx="4" class="f-bg"/><text x="34" y="218" class="f-mut">Order: 4 items</text>
+          <rect x="28" y="236" width="106" height="28" rx="7" class="f-t"/><text x="52" y="254" class="f-txt" style="fill:#fff">Submit order</text>
+        </svg>
+        <figcaption>Illustration: salesman's phone view</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 420 250" role="img" aria-label="Illustration of an order volume and status dashboard">
+          <rect x="14" y="14" width="120" height="48" rx="8" class="f-bg"/><text x="26" y="34" class="f-mut">Orders today</text><rect x="26" y="42" width="44" height="10" rx="3" class="f-t"/>
+          <rect x="150" y="14" width="120" height="48" rx="8" class="f-bg"/><text x="162" y="34" class="f-mut">Pending</text><rect x="162" y="42" width="30" height="10" rx="3" class="f-a"/>
+          <rect x="286" y="14" width="120" height="48" rx="8" class="f-bg"/><text x="298" y="34" class="f-mut">Delivered</text><rect x="298" y="42" width="52" height="10" rx="3" class="f-c"/>
+          <text x="16" y="86" class="f-txt">Order volume</text>
+          <line x1="16" y1="230" x2="404" y2="230" class="f-l" stroke="var(--line)"/>
+          <g>
+            <rect class="gb f-t" x="30" y="160" width="36" height="70" rx="3"/><rect class="gb f-t" x="94" y="132" width="36" height="98" rx="3"/><rect class="gb f-t" x="158" y="146" width="36" height="84" rx="3"/>
+            <rect class="gb f-t" x="222" y="110" width="36" height="120" rx="3"/><rect class="gb f-t" x="286" y="124" width="36" height="106" rx="3"/><rect class="gb f-t" x="350" y="96" width="36" height="134" rx="3"/>
+          </g>
+          <path class="f-line" d="M48 150 L112 122 L176 136 L240 100 L304 114 L368 86"/>
+        </svg>
+        <figcaption>Illustration: order volume and status dashboard (Looker Studio / Power BI)</figcaption>
+      </figure>
+    </div>
+    <div class="proj2">
+      <h3>Academy Student Dropout Dashboard</h3>
+      <p>Excel and Google Sheets. A dashboard that identifies and monitors students at risk of dropping out, with Google Sheets as the live data source. It turns raw student records into a view the academy can scan at a glance.</p>
+      <div class="figs two">
+        <figure>
+          <svg viewBox="0 0 300 180" role="img" aria-label="Illustration of a student dropout risk dashboard">
+            <circle class="f-l" cx="80" cy="90" r="31" style="fill:none;stroke:var(--line);stroke-width:14"/>
+            <circle class="donut" cx="80" cy="90" r="31" transform="rotate(-90 80 90)"/>
+            <text x="80" y="94" text-anchor="middle" class="f-txt">At risk</text>
+            <g>
+              <rect x="170" y="40" width="110" height="10" rx="3" class="f-l"/><rect class="f-c" x="170" y="40" width="82" height="10" rx="3"/>
+              <rect x="170" y="70" width="110" height="10" rx="3" class="f-l"/><rect class="f-a" x="170" y="70" width="56" height="10" rx="3"/>
+              <rect x="170" y="100" width="110" height="10" rx="3" class="f-l"/><rect class="f-t" x="170" y="100" width="30" height="10" rx="3"/>
+            </g>
+            <text x="170" y="32" class="f-mut">Monitored students</text>
+            <text x="170" y="140" class="f-mut">High, medium, low risk</text>
+          </svg>
+          <figcaption>Illustration: dropout risk view</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 300 180" role="img" aria-label="Illustration of a training session with code and charts">
+            <rect x="20" y="16" width="260" height="120" rx="8" class="f-bg"/>
+            <rect x="32" y="30" width="110" height="8" rx="3" class="f-t"/><rect x="32" y="46" width="80" height="8" rx="3" class="f-l"/><rect x="44" y="62" width="96" height="8" rx="3" class="f-l"/><rect x="44" y="78" width="60" height="8" rx="3" class="f-a"/><rect x="32" y="94" width="90" height="8" rx="3" class="f-l"/>
+            <g><rect class="gb f-t" x="170" y="86" width="16" height="32" rx="2"/><rect class="gb f-a" x="194" y="64" width="16" height="54" rx="2"/><rect class="gb f-c" x="218" y="44" width="16" height="74" rx="2"/><rect class="gb f-t" x="242" y="72" width="16" height="46" rx="2"/></g>
+            <rect x="120" y="140" width="60" height="8" rx="3" class="f-l"/>
+            <g class="f-t"><circle cx="70" cy="165" r="7"/><circle cx="110" cy="165" r="7"/><circle cx="150" cy="165" r="7"/><circle cx="190" cy="165" r="7"/><circle cx="230" cy="165" r="7"/></g>
+          </svg>
+          <figcaption>Illustration: hands-on data training for 200+ students</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="rv">
+    <h2>Skills, mapped to where I used them</h2>
+    <p class="sub">Filled bars show where each skill appears in my projects and teaching.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="scroll"><table id="heat"><thead><tr><th>Skill</th><th>JKPrefix</th><th>Dropout dashboard</th><th>Training</th></tr></thead><tbody></tbody></table></div>
+    <p class="legend">Dashed cell: not used there.</p>
+    <h3 style="margin-top:2rem;font-size:1.2rem">Also in my toolkit</h3>
+    <div class="chips"><span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">Matplotlib</span><span class="chip">Data cleaning</span><span class="chip">KPI development</span><span class="chip">Business reporting</span><span class="chip">n8n</span><span class="chip">Workflow automation</span><span class="chip">Google Workspace</span><span class="chip">Pivot tables</span><span class="chip">Lookup functions</span></div>
+    <h3 style="margin-top:1.5rem;font-size:1.2rem">Exploring</h3>
+    <div class="chips"><span class="chip">Generative AI</span><span class="chip">LLMs</span><span class="chip">AI agents</span><span class="chip">AI automation</span></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="rv">
+    <h2>Experience and education</h2>
+    <p class="sub">Currently training the next group of analysts and developers.</p>
+    <div class="tl">
+      <h3>IT Trainer, MITS Academy</h3>
+      <small class="mono">September 2025 to present</small>
+      <ul>
+        <li>Deliver project-based training in Python, SQL, PostgreSQL, Power BI, DAX/Power Query, Advanced Excel, and the MERN stack to 200+ students, mirroring real data and development workflows.</li>
+        <li>Design hands-on exercises across the full data workflow: preparation, analysis, visualization, dashboards, and reporting.</li>
+        <li>Teach relational database design, SQL querying, data modeling, and applied business intelligence.</li>
+        <li>Break technical concepts into business-relevant exercises that build problem-solving, not just tool familiarity.</li>
+      </ul>
+    </div>
+    <div class="edu">
+      <div class="panel"><h3>MCA, Data Science</h3><p style="margin:.3rem 0 0">Lovely Professional University (LPU), Distance Learning</p><small class="mono">2026 to present</small></div>
+      <div class="panel"><h3>BCA</h3><p style="margin:.3rem 0 0">Guru Nanak Dev University (GNDU)</p><small class="mono">2022 to 2025 | 70%</small></div>
+    </div>
+    <h3 style="margin-top:2rem;font-size:1.2rem">Core strengths</h3>
+    <div class="str"><span class="chip">Business problem solving</span><span class="chip">Data analysis</span><span class="chip">Business process automation</span><span class="chip">Dashboard development</span><span class="chip">Software development</span><span class="chip">Technical training</span><span class="chip">Project-based learning</span><span class="chip">Analytical thinking</span><span class="chip">Client requirement understanding</span><span class="chip">End-to-end solution development</span></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="rv">
+    <h2>Let's work together</h2>
+    <p class="sub">Have a process to digitize or data to make sense of? Reach out.</p>
+    <div class="contact">
+      <button id="copyMail"><small>Email (select to copy)</small><span id="mailTxt">dhruv.mahindru08@gmail.com</span></button>
+      <a href="tel:+916239535324"><small>Phone</small>6239535324</a>
+      <a href="https://linkedin.com/in/dhruv-mahindru-61263430b/" target="_blank" rel="noopener"><small>LinkedIn</small>dhruv-mahindru</a>
+      <a href="https://github.com/DhruvMahindru8104" target="_blank" rel="noopener"><small>GitHub</small>DhruvMahindru8104</a>
+    </div>
+  </div>
+</section>
+<footer>© 2026 Dhruv Mahindru</footer>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* theme */
+const root=document.documentElement;
+$('#theme').onclick=()=>{
+  const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+  root.dataset.theme=dark?'light':'dark';
+};
+
+/* typed query + KPI count-up */
+const q=[
+ ['SELECT ','k'],['role, ','n'],['skills, ','n'],['students_trained\n','n'],
+ ['FROM ','k'],['dhruv_mahindru\n',''],
+ ['WHERE ','k'],["tools IN ('Power BI','SQL','Python','Excel')\n",'n'],
+ ['ORDER BY ','k'],['impact ','n'],['DESC;','k']
+];
+const qEl=$('#query');
+function typeQuery(){
+  if(reduce){qEl.innerHTML=q.map(([t,c])=>`<span class="${c}">${t}</span>`).join('');return runKpis()}
+  let i=0,j=0,html='';
+  const step=()=>{
+    if(i>=q.length){qEl.innerHTML=html+'<span class="caret"></span>';return}
+    const [t,c]=q[i];j++;
+    qEl.innerHTML=html+`<span class="${c}">${t.slice(0,j)}</span><span class="caret"></span>`;
+    if(j>=t.length){html+=`<span class="${c}">${t}</span>`;i++;j=0}
+    setTimeout(step,22);
+  };
+  step(); runKpis();
+}
+function runKpis(){
+  $$('.kpi b').forEach(b=>{
+    const n=+b.dataset.n,s=b.dataset.s||'';
+    if(reduce){b.textContent=n+s;return}
+    const t0=performance.now(),d=1400;
+    const f=t=>{const p=Math.min((t-t0)/d,1);b.textContent=Math.round(n*(1-Math.pow(1-p,3)))+(p===1?s:'');if(p<1)requestAnimationFrame(f)};
+    requestAnimationFrame(f);
+  });
+}
+typeQuery();
+
+/* pipeline */
+const stages=[
+ {t:'Catalogue',s:'Salesman browses',d:'An interactive product catalogue lets salesmen present products to customers and capture orders digitally in the field.',k:['React','Vite','Tailwind CSS','JavaScript']},
+ {t:'Order capture',s:'Customer order',d:'Orders are captured on the phone, replacing paper slips and scattered messages.',k:['PWA','JavaScript']},
+ {t:'Submission',s:'App to Sheets',d:'An order-submission pipeline connects the web app to Google Sheets through Google Apps Script and APIs, giving the business a live, centralized order record.',k:['Google Apps Script','APIs','Google Sheets']},
+ {t:'Tracking',s:'One source of truth',d:'The business data is structured for centralized order tracking and reporting, so order status is checked in one place instead of chased across salesmen.',k:['Google Sheets','Data modeling']},
+ {t:'Dashboards',s:'Visibility',d:'Looker Studio and Power BI dashboards sit on top of the order data and show order volume and status without manual reporting.',k:['Looker Studio','Power BI']}
+];
+const flow=$('#flow'),det=$('#detail');
+function show(i){
+  $$('.stage').forEach((b,k)=>b.setAttribute('aria-selected',k===i));
+  const s=stages[i];
+  det.innerHTML=`<h3>${s.t}</h3><p style="margin:.4rem 0">${s.d}</p><div class="chips">${s.k.map(x=>`<span class="chip">${x}</span>`).join('')}</div>`;
+  det.classList.remove('swap');void det.offsetWidth;det.classList.add('swap');
+}
+stages.forEach((s,i)=>{
+  const b=document.createElement('button');b.className='stage';b.setAttribute('role','tab');
+  b.innerHTML=`<b>${s.t}</b><small>${s.s}</small>`;b.onclick=()=>show(i);flow.appendChild(b);
+});
+show(0);
+$('#stack').innerHTML='<span class="chip" style="border:0;padding-left:0">Full stack:</span>'+['React','Vite','JavaScript','Tailwind CSS','Google Sheets','Apps Script','APIs','PWA','Looker Studio','Git/GitHub'].map(x=>`<span class="chip">${x}</span>`).join('');
+
+/* heatmap */
+const skills=[
+ ['Data','Python',[0,0,1]],['Data','SQL',[0,0,1]],['Data','PostgreSQL',[0,0,1]],
+ ['BI','Power BI / DAX',[1,0,1]],['BI','Power Query',[0,0,1]],['BI','Looker Studio',[1,0,0]],['BI','Advanced Excel',[0,1,1]],
+ ['Web','React / JavaScript',[1,0,1]],['Web','Tailwind CSS / Vite',[1,0,0]],['Web','PWA / APIs',[1,0,0]],
+ ['Automation','Google Sheets',[1,1,0]],['Automation','Google Apps Script',[1,0,0]],['Tools','Git / GitHub',[1,0,0]]
+];
+const cats=['All','Data','BI','Web','Automation','Tools'];
+let cur='All';
+const tabs=$('#tabs'),tb=$('#heat tbody'),heat=$('#heat');
+cats.forEach(c=>{const b=document.createElement('button');b.className='tab';b.textContent=c;b.setAttribute('aria-pressed',c===cur);
+  b.onclick=()=>{cur=c;$$('.tab').forEach(x=>x.setAttribute('aria-pressed',x.textContent===c));draw(true)};tabs.appendChild(b)});
+function draw(replay){
+  heat.classList.remove('in');
+  tb.innerHTML=skills.filter(s=>cur==='All'||s[0]===cur).map(s=>`<tr><td>${s[1]}</td>${s[2].map(v=>`<td class="cell ${v?'':'off'}"><i></i></td>`).join('')}</tr>`).join('');
+  if(replay||heat.dataset.seen){void heat.offsetWidth;requestAnimationFrame(()=>heat.classList.add('in'))}
+}
+draw();
+
+/* copy email */
+$('#copyMail').onclick=async()=>{
+  const m='dhruv.mahindru08@gmail.com',el=$('#mailTxt');
+  try{await navigator.clipboard.writeText(m);el.textContent='Copied to clipboard'}catch(e){el.textContent='Copy failed. Select the address manually: '+m}
+  setTimeout(()=>el.textContent=m,1800);
+};
+
+/* scroll reveal + heatmap trigger + nav highlight */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in');
+  if(e.target.contains(heat)){heat.dataset.seen=1;heat.classList.add('in')}
+  io.unobserve(e.target);
+}),{threshold:.15});
+$$('.rv').forEach(el=>io.observe(el));
+const links=$$('nav a');
+const so=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));
+}),{rootMargin:'-45% 0px -50% 0px'});
+$$('section').forEach(s=>so.observe(s));
+</script>
+</body>
+</html>
